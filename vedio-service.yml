@@ -34,8 +34,3 @@ info:
     description: "This is vedio service [configuration from github]"
     version: "1.G0"
 
-info:
-  app:
-    name: "video-service"
-    description: "This is video service"
-    version: "1.0"
