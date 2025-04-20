@@ -1,6 +1,15 @@
 spring:
   application:
     name: course-service
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  config:
+    import: "optional:configserver:http://localhost:9094/"
+
 
   datasource:
     url: jdbc:postgresql://localhost:5432/coursedb
@@ -34,6 +43,14 @@ management:
 
 info:
   app:
-    name: "course-service-github"
-    description: "This is course service [configuration from github]--bus refresh"
-    version: "1.G0"
+    name: "course-service"
+    description: "This is course service"
+    version: "1.0"
+
+resilience4j.retry:
+  instances:
+    default:
+      maxAttempts: 3
+      waitDuration: 100
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
